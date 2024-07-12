@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}{{ article.title }} - {{ SITENAME }}{% endblock %}
+
+{% block content %}
+<article>
+    <header>
+        <h1>{{ article.title }}</h1>
+        <p>
+            Published on {{ article.date|strftime('%B %d, %Y') }}
+            {% if article.category %}
+            in <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
+            {% endif %}
+        </p>
+    </header>
+    {{ article.content }}
+</article>
+{% endblock %}

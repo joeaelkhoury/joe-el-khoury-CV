@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero">
+    <img src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/profile.png" alt="{{ AUTHOR }}" class="profile-image">
+    <h1>{{ AUTHOR }}</h1>
+    <h2>Data Scientist & MLOps Expert</h2>
+    <p>5 years of industry experience | AI thought leader | Team manager</p>
+</div>
+
+<section class="expertise">
+    <h2>Areas of Expertise</h2>
+    <ul>
+        <li>AI-generative technologies</li>
+        <li>Large Language Models (LLM)</li>
+        <li>MLOps</li>
+        <li>Machine Learning</li>
+        <li>Multi-cloud environments</li>
+    </ul>
+</section>
+
+<section class="reasons">
+    <h2>3 Reasons to Connect</h2>
+    <ol>
+        <li>Technical and managerial expertise in AI and Data Science</li>
+        <li>Followed by over 1,000 specialists on Medium</li>
+        <li>Contributing to industry influence through AI research and thought leadership</li>
+    </ol>
+</section>
+
+<section class="latest-articles">
+    <h2>Latest Insights</h2>
+    <div class="article-grid">
+    {% if articles %}
+        {% for article in articles[:6] %}
+            <div class="article-card">
+                <h3><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h3>
+                <p class="article-date">{{ article.date|strftime('%B %d, %Y') }}</p>
+                <p class="article-summary">{{ article.summary|truncate(100) }}</p>
+                <a href="{{ SITEURL }}/{{ article.url }}" class="read-more">Read More</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No articles available at the moment.</p>
+    {% endif %}
+    </div>
+</section>
+
+<section class="cta">
+    <h2>Let's Collaborate</h2>
+    <p>Interested in leveraging AI for your business? Let's connect and explore how we can drive innovation together.</p>
+    <a href="mailto:joe2elkhoury@gmail.com" class="cta-button">Get in Touch</a>
+</section>
+{% endblock content %}
